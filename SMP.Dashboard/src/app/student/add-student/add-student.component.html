@@ -1,0 +1,55 @@
+<div class="container mt-4 p-5">
+  <div [formGroup]="studentForm" (submit)="addStudent()">
+    <div class="p-card p-5">
+      <div class="p-card-body">
+        <p-fieldset legend="Add Student">
+          <div class="row">
+            <div class="col-md-4 p-field">
+              <label for="firstName">First Name</label>
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                  <i class="pi pi-user"></i>
+                </span>
+                <input formControlName="firstName" type="text" id="firstName" pInputText [(ngModel)]="FirstName" name="firstName" placeholder="First Name" required
+                       pTooltip="Enter your first name">
+              </div>
+              <div *ngIf="studentForm.get('firstName')?.hasError('required')">
+                First Name is required.
+              </div>
+            </div>
+            <div class="col-md-4 p-field">
+              <label for="lastName">Last Name</label>
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                  <i class="pi pi-user"></i>
+                </span>
+                <input formControlName="lastName" type="text" id="lastName" pInputText [(ngModel)]="LastName" name="lastName" placeholder="Last Name" required
+                       pTooltip="Enter your last name">
+              </div>
+              <div *ngIf="studentForm.get('lastName')?.hasError('required')">
+                Last Name is required.
+              </div>
+            </div>
+            <div class="col-md-4 p-field">
+              <label for="studentNumber">Student Number</label>
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                  <i class="pi pi-id-card"></i>
+                </span>
+                <input formControlName="studentNumber" type="text" id="studentNumber" pInputText [(ngModel)]='StudentNumber' name="studentNumber" placeholder="Student Number" required
+                       pTooltip="Enter your student number">
+              </div>
+              <div *ngIf="studentForm.get('studentNumber')?.hasError('required')">
+                Student Number is required.
+              </div>
+            </div>
+          </div>
+        </p-fieldset>
+      </div>
+      <div class="p-card-footer d-flex justify-content-center">
+        <button type="submit" pButton class="p-button-primary rounded" (click)="addStudent()" [disabled]="!studentForm.valid">Add Student</button>
+      </div>
+    </div>
+  </div>
+</div>
+<p-toast></p-toast>
