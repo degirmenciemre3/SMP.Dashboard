@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <div *ngIf="students && students.length">
+    <h2>Öğrenci Listesi</h2>
+    <p-table [value]="students">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Ad</th>
+          <th>Soyad</th>
+          <th>Öğrenci Numarası</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-student>
+        <tr>
+          <td>{{ student.firstName }}</td>
+          <td>{{ student.lastName }}</td>
+          <td>{{ student.studentNumber }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div *ngIf="!students || students.length === 0">
+    <p>Henüz öğrenci bulunmamaktadır.</p>
+  </div>
+</div>
+<p-toast></p-toast>
