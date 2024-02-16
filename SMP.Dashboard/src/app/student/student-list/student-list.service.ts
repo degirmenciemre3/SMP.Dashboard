@@ -21,4 +21,19 @@ export class StudentService {
     console.log(student)
     return this.http.post(url, student);
   }
+
+  getAvailableClasses(): Observable<any[]>{
+    const url = `${this.apiUrl}/Class`;
+    return this.http.get<any[]>(url);
+  }
+
+  assignClass(body:any): Observable<any> {
+    const url = `${this.apiUrl}/Student/AssignClass`;
+    return this.http.post(url,body);
+  }
+
+  removeClass(body:any): Observable<any>{
+    const url = `${this.apiUrl}/Student/RemoveClass`;
+    return this.http.post(url,body);
+  }
 }

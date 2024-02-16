@@ -30,6 +30,11 @@ export class NavbarComponent implements OnInit{
         icon: 'pi pi-fw pi-users',
         routerLink: '/student',
       },
+      {
+        label: 'Classes',
+        icon: 'pi pi-fw pi-database',
+        routerLink: '/classes',
+      }
     ];
   }
 }
