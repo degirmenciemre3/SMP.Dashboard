@@ -1,0 +1,68 @@
+<div class="container mt-4 mb-5">
+  <div *ngIf="students && students.length">
+    <h2>Öğrenci Listesi</h2>
+    <p-table [value]="students">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Ad</th>
+          <th>Soyad</th>
+          <th>Öğrenci Numarası</th>
+          <th>Aldığı Dersler</th>
+          <th>Detay</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-student>
+        <tr>
+          <td>{{ student.firstName }}</td>
+          <td>{{ student.lastName }}</td>
+          <td>{{ student.studentNumber }}</td>
+          <td>
+            <p *ngFor="let class of student.classes">{{ class.className }}</p>
+          </td>
+          <td><p-button (click)="openInfoPage(student.id)">Detay</p-button></td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <div *ngIf="selectedStudent && selectedStudent.classes">
+      <p-table *ngIf="selectedStudent.classes.length > 0" [value]="selectedStudent.classes">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Ders İsmi</th>
+            <th>Ders Kodu</th>
+            <th>Ders Çıkar</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-class>
+          <tr>
+            <td>{{ class.className }}</td>
+            <td>{{ class.classCode }}</td>
+            <td><button pButton icon="pi pi-times" (click)="removeClass(class.classId)"></button></td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <div>
+        <p-divider align="center" type="solid">
+          <b>Ders Ekle</b>
+        </p-divider>
+        <p-toolbar>
+          <div class="p-toolbar-group-start">
+            <p>{{selectedStudent.firstName}} {{selectedStudent.lastName}}</p>
+          </div>
+          <div class="p-toolbar-group-center">
+              <span class="p-input-icon-left">
+                  <i class="pi pi-search"></i>
+                  <p-dropdown [options]="availableClasses" [(ngModel)]="selectedClass" optionLabel="className" [showClear]="true" placeholder="Ders Seçin"></p-dropdown>
+              </span>
+          </div>
+          <div class="p-toolbar-group-end">
+              <button pButton icon="pi pi-plus" (click)="assignClass()" class="mr-2"></button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!students || students.length === 0">
+    <p>Henüz öğrenci bulunmamaktadır.</p>
+  </div>
+</div>
+<p-toast></p-toast>
