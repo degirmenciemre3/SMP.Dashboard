@@ -20,17 +20,12 @@ import { TooltipModule } from 'primeng/tooltip';
 import { FieldsetModule } from 'primeng/fieldset';
 import { MessageService } from 'primeng/api';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ClassesComponent } from './classes/classes.component';
-import { DropdownModule } from 'primeng/dropdown';
-import { DividerModule } from 'primeng/divider';
-import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent,
-    ClassesComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -48,10 +43,7 @@ import { ToolbarModule } from 'primeng/toolbar';
     InputGroupAddonModule,
     TooltipModule,
     FieldsetModule,
-    ReactiveFormsModule,
-    DropdownModule,
-    DividerModule,
-    ToolbarModule
+    ReactiveFormsModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent,NavbarComponent]

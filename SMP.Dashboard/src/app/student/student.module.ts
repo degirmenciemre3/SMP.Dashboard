@@ -13,9 +13,6 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { TooltipModule } from 'primeng/tooltip';
 import { FieldsetModule } from 'primeng/fieldset';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DropdownModule } from 'primeng/dropdown';
-import { DividerModule } from 'primeng/divider';
-import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
   declarations: [AddStudentComponent,StudentListComponent],
@@ -31,10 +28,7 @@ import { ToolbarModule } from 'primeng/toolbar';
     InputGroupAddonModule,
     TooltipModule,
     FieldsetModule,
-    ReactiveFormsModule,
-    DropdownModule,
-    DividerModule,
-    ToolbarModule
+    ReactiveFormsModule
   ],
   exports:[AddStudentComponent,StudentListComponent]
 })
